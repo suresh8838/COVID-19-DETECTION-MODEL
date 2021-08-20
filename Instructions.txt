@@ -1,0 +1,29 @@
+****Instructions to follow****
+
+1.Install all the requirments given in requirements.txt file
+2.Extract the model folder
+3.In the app.py file , change the path of model where you have stored it.
+4.Then run the app.py file and in the Python terminal you get the localhost web address.
+5.Click on it, the webpage will open and then upload the image for testing.
+
+### Understanding the Model:
+
+#### **Input Image:**
+* Here, the input image is (224,224,3) which means image is (224,224) size with RGB color.
+
+#### **Layers:**
+* **Conv2D Layer(3,3,3,32):** Conv2D Layer contains 32 kernels, size (3,3) **====>** Output: 32 images of size (222,222).
+* **Conv2D Layer(3,3,32,64):** Conv2D Layer contain 64 kernels, size (3,3) **====>** Output: 64 images of size (220,220).
+* **MaxPool2D Layer (3,3):**  MaxPool2D Layer is applied with (3,3) pool-size **====>** Output: 64 images of size (73,73).
+* **Dropout Layer**
+* **Conv2D Layer(3,3,64,64):** Conv2D Layer contain 64 kernels, size (3,3) **====>** Output: 64 images of size (71,71).
+* **MaxPool2D Layer (3,3):**  MaxPool2D Layer is applied with (3,3) pool-size **====>** Output: 64 images of size (23,23).
+* **Dropout Layer**
+* **Conv2D Layer(3,3,64,128):** Conv2D Layer contain 128 kernels, size (3,3) **====>** Output: 128 images of size (21,21).
+* **MaxPool2D Layer (3,3):**  MaxPool2D Layer is applied with (3,3) pool-size **====>** Output: 128 images of size (7,7).
+* **Dropout Layer**
+* **Flatten Layer**: This will flatten all the (7,7,128) images **====>** Output: (6272).
+* **Dense Layer(6272,128):** Here Flattened array will be passed to 128 neurons in the Hidden Layer with applying 'relu' Activation Function **====>** Output: (128).
+* **Dense Layer(128,2):** Output of 128 Neurons is passed to 2 Neurons with Activation Function 'softmax' which will help in deciding final output. **====>** Output: (2).
+
+* Here, The **Images are converted into different dimensions according to applied different Mathematical Equations** based on Conv2D layer, MaxPolling and Padding.
